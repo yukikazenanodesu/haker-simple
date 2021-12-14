@@ -33,22 +33,22 @@ class Core():
 
     def daswasc(self):
         if self.packet_id == 1:
-            QMessageBox.warning(None, "警告", "没有可保存的数据包！")
+            QMessageBox.warning(None, "warring", "no packge")
             return
         filename, _ = QFileDialog.getSaveFileName(
             parent=None,
-            caption="保存文件",
+            caption="save",
             directory=os.getcwd(),
             filter="All Files (*);;Pcap Files (*.pcap)",
         )
         if filename == "":
-            QMessageBox.warning(None, "喵喵", "失败")
+            QMessageBox.warning(None, "emm", "false")
             return
         if filename.find(".pcap") == -1:
             filename = filename + ".pcap"
         shutil.copy(self.temp_file, filename)
         os.chmod(filename, 0o0400 | 0o0200 | 0o0040 | 0o0004)
-        QMessageBox.information(None, "喵喵", "成功")
+        QMessageBox.information(None, "emm", "success")
         self.save_flag = True
     def pckwasd(self, netcard, filters):
         dwadawdawdaw.clear()
@@ -594,8 +594,8 @@ class Core():
         if self.stop_flag and not self.save_flag:
             reply = QMessageBox.question(
                 None,
-                "喵喵",
-                "喵呜？",
+                "emm",
+                "emm?",
                 QMessageBox.Yes,
                 QMessageBox.Cancel,
             )
@@ -769,14 +769,14 @@ class Core():
             recv_bytes, sent_bytes, recv_pak, sent_pak = wdawd(
                 wvisv(netcard))
             if not self.pause_flag:
-                self.main_window.comNum.setText('下载速度：' + recv_bytes)
-                self.main_window.baudNum.setText('上传速度：' + sent_bytes)
-                self.main_window.getSpeed.setText('收包速度：' + recv_pak)
-                self.main_window.sendSpeed.setText('发包速度：' + sent_pak)
-        self.main_window.comNum.setText('下载速度：0 B/s')
-        self.main_window.baudNum.setText('上传速度：0 B/s')
-        self.main_window.getSpeed.setText('收包速度：0 pak/s')
-        self.main_window.sendSpeed.setText('发包速度：0 pak/s')
+                self.main_window.comNum.setText('down：' + recv_bytes)
+                self.main_window.baudNum.setText('update：' + sent_bytes)
+                self.main_window.getSpeed.setText('recive：' + recv_pak)
+                self.main_window.sendSpeed.setText('sent：' + sent_pak)
+        self.main_window.comNum.setText('download：0 B/s')
+        self.main_window.baudNum.setText('update：0 B/s')
+        self.main_window.getSpeed.setText('recive：0 pak/s')
+        self.main_window.sendSpeed.setText('sent：0 pak/s')
 abdc = {
     1: "who-has",
     2: "is-at",
